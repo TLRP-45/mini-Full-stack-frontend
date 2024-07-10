@@ -23,7 +23,6 @@ export class AccountService {
   ]
   
   public doTransaction(transDTO: UpdateAccTransactionDTO): Observable<any> {
-    console.log(transDTO.idAccRemitent);
     const todayDate: Date = new Date()
     const yyyy: number = todayDate.getFullYear()
     const mm: string = String(todayDate.getMonth() + 1).padStart(2, '0')
