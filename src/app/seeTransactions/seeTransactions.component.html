@@ -1,0 +1,49 @@
+<body class="bg-gray-100">
+
+  <nav class="bg-red-500 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">Banco Santander</h1>
+      <ul class="flex space-x-4">
+        <li><a href="home" class="btn btn-light hover:underline text-red-600 font-bold">Inicio</a></li>
+        <li><a href="" class="btn btn-dark hover:underline text-white font-bold" (click)="logOut()">Cerrar Sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mx-auto mt-8">
+    <h2 class="text-2xl font-bold mb-4">Filtrar transacciones por fecha</h2>
+    <form [formGroup]="dateForm" class="bg-white rounded-lg shadow-md p-4 mb-4 flex space-x-4" (ngSubmit)="filterTransByDate()">
+      <div class="flex space-x-4">
+        <label for="initialDate">Fecha de Inicio:</label>
+        <input type="date" formControlName="initialDate" class="border-gray-300 rounded-md p-2 border-2">
+      </div>
+      <div class="flex space-x-4">
+        <label for="endDate">Fecha Final:</label>
+        <input type="date" formControlName="endDate" class="border-gray-300 rounded-md p-2 border-2">
+      </div>
+      <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4">Filtrar por Fecha</button>
+      <button type="button" (click)="restartFilter()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4">Restablecer filtro</button>
+    </form>
+  </div>
+
+<div class="container mx-auto mt-8">
+  <ng-container *ngIf="!(filtredTransactions.length!=0)">
+    <h2 class="text-2xl font-bold mb-4">Tus transacciones</h2>  
+    <div *ngFor="let transaction of transactions" class="bg-white rounded-lg shadow-md p-4 mb-4">
+      <p class="text-lg">Fecha: {{ transaction.date }}</p>
+      <p class="text-lg">Cantidad: ${{ transaction.amount }}</p>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="filtredTransactions.length!=0">
+    <h2 class="text-2xl font-bold mb-4">Tus transacciones</h2>  
+    <div *ngFor="let transaction of filtredTransactions" class="bg-white rounded-lg shadow-md p-4 mb-4">
+      <p class="text-lg">Fecha: {{ transaction.date }}</p>
+      <p class="text-lg">Cantidad: ${{ transaction.amount }}</p>
+    </div>
+  </ng-container>
+  
+  
+
+</div>
+<br>
+</body>

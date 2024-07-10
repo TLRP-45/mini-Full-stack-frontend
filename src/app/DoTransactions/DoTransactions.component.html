@@ -1,0 +1,40 @@
+<body class="bg-gray-100">
+
+  <nav class="bg-red-500 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">Banco Santander</h1>
+      <ul class="flex space-x-4">
+        <li><a href="home" class="btn btn-light hover:underline text-red-600 font-bold">Inicio</a></li>
+        <li><a href="" class="btn btn-dark hover:underline text-white font-bold" (click)="logOut()">Cerrar Sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mx-auto mt-8">
+      <h2 class="text-2xl font-bold mb-4">Transacción</h2>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4">
+        <form [formGroup]="transForm" (ngSubmit)="sendVerifyKey()">
+          <label class="block mb-2 text-xl text-gray-900 font-bold">Número de la cuenta</label>
+          <input formControlName="numAccountDestiny" type="number" class="border-gray-300 rounded-md p-2 mr-2 border-2" [readonly]="showVerify"> 
+          <label class="block mb-2 text-xl text-gray-900 font-bold">Monto</label>
+          <input formControlName="quantity" type="number" class="border-gray-300 rounded-md p-2 border-2" [readonly]="showVerify">
+          <br>
+          <button *ngIf="!showVerify" type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4">Enviar transacción</button>
+        </form> 
+      </div>
+  </div>
+
+  <div class="container mx-auto mt-8" *ngIf="showVerify">
+    <h2 class="text-2xl font-bold mb-4">Verificación de la llave</h2>
+    <div class="bg-white rounded-lg shadow-md p-4 mb-4">
+      <form [formGroup]="keyForm" (ngSubmit)="verifyKey()">
+        <label class="block mb-2 text-xl text-gray-900 font-bold">Código de verificación</label>
+        <input formControlName="verifyKey" type="number" class="border-gray-300 rounded-md p-2 mr-2 border-2">
+        <br>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4">Verificar</button>
+      </form>
+    </div>
+  </div>
+
+  <br>
+</body>

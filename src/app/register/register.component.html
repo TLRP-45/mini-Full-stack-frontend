@@ -1,0 +1,61 @@
+<body class="bg-gray-100">
+
+  <nav class="bg-red-500 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">Banco Santander</h1>
+      <ul class="flex space-x-4">
+        <li><a href="login" class="btn btn-light hover:underline text-red-600 font-bold">Si tienes una cuenta, ¡inicia ya!</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mx-auto mt-8">
+    <h2 class="text-2xl font-bold mb-4">Formulario de registro</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="space-y-4">
+        
+        <div>
+          <label class="block mb-2 text-sm text-gray-900 font-bold">Nombre Completo</label>
+          <input formControlName="fullname" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 rounded p-0.5">
+          <div *ngIf="registerForm.get('fullname')?.invalid && registerForm.get('fullname')?.touched" class="text-red-600 text-sm">
+            Error: El Nombre completo es obligatorio y debe tener entre 5 y 50 caracteres.
+          </div>
+        </div>
+        <div>
+          <label class="block mb-2 text-sm text-gray-900 font-bold">RUT</label>
+          <input formControlName="rut" type="number" class="bg-gray-50 border border-gray-300 text-gray-900 rounded p-0.5">
+          <div *ngIf="registerForm.get('rut')?.invalid && registerForm.get('rut')?.touched" class="text-red-600 text-sm">
+            Error: El RUT es obligatorio y debe tener entre 8 y 12 caracteres.
+          </div>
+        </div>
+        <div>
+          <label class="block mb-2 text-sm text-gray-900 font-bold">Correo electrónico</label>
+          <input formControlName="email" type="email" class="bg-gray-50 border border-gray-300 text-gray-900 rounded p-0.5">
+          <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-red-600 text-sm">
+            Error: Debe introducir un correo electrónico válido.
+          </div>
+        </div>
+        <div>
+          <label class="block mb-2 text-sm text-gray-900 font-bold">Número Telefónico</label>
+          <input formControlName="phone" type="number" class="bg-gray-50 border border-gray-300 text-gray-900 rounded p-0.5">
+          <div *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched" class="text-red-600 text-sm">
+            Error: El número telefónico es obligatorio y debe tener 9 números empezando con el "9".
+          </div>
+        </div>
+        <div>
+          <label class="block mb-2 text-sm text-gray-900 font-bold">Contraseña</label>
+          <input formControlName="password" type="password" class="bg-gray-50 border border-gray-300 text-gray-900 rounded p-0.5">
+          <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-red-600 text-sm">
+            Error: La contraseña es obligatoria y debe tener entre 8 y 32 caracteres.
+          </div>
+        </div>
+        
+      </div>
+
+      <br>
+
+      <button class="block bg-red-500 text-white p-2 rounded text-sm font-bold hover:bg-red-800" type="submit">Registrar</button>
+    </form>
+  </div>
+  <br>
+</body>
