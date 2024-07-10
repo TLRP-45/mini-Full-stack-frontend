@@ -16,7 +16,7 @@ export class AccountService {
     private clientService: ClientService
   ) { }
   
-  private apiUrl= 'http://localhost:3000/accounts'
+  private apiUrl= 'http://mini-full-stack-backend-production.up.railway.app/accounts'
   private twoStepAuthCode: string ='45681102'
   
   private transactions: Transaction[]=[

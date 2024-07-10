@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} }
+const config: SocketIoConfig = { url: 'https://mini-full-stack-backend-production.up.railway.app/', options: {} }
 
 
 @NgModule({

@@ -11,7 +11,7 @@ import { Account } from '../models/Account';
 export class ClientService {
   constructor(private http: HttpClient) { }
 
-  private apiUrl= 'http://localhost:3000/Client/'
+  private apiUrl= 'https://mini-full-stack-backend-production.up.railway.app/Client/'
   
   public getClientData(): Observable<any>  {
     return this.http.get<any>(this.apiUrl)
